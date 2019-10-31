@@ -51,14 +51,18 @@ $ chalice deploy
 ```
 
 This will cause this error:
+
 "An error occurred (InvalidClientTokenId) when calling the CreateRole operation: The security token included in the request is invalid"
 
-InvalidClientTokenId Cause:
+*InvalidClientTokenId Cause:*
+
 Cloud9 is generating (and regenerating) a set of temporary credentials every five minutes for the ec2-user in ~/.aws/credentials. This prevents the EC2 instance from inheriting permissions from an IAM role assigned to the instance itself.
 
-InvalidClientTokenId Resolution:
+*InvalidClientTokenId Resolution:*
+
 Step 1: Turn off the managed temporary credentials.
 Within Cloud9 Settings (accessed via the gear icon on upper right), under AWS Settings section, turn off the AWS Managed Temporary Credentials.
+
 Step 2: Install AWS access key.
 You must make use an IAM user and create a static AWS access key.
 Go to the AWS web console and select IAM service. Go to your IAM user. Select the Security credentials tab. Create an access key. Save the Access key ID and Secret access key.
